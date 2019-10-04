@@ -13,25 +13,6 @@
   <!--googlefont-->
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
-  <!-- Connexion à la base de données -->
-  <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname= "take";
-
-    try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-      // set the PDO error mode to exception
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      // echo "Connected successfully";
-      echo "</div>
-      </div>";
-    }
-    catch(PDOException $e){
-      echo "Connection failed: " . $e->getMessage();
-    }
-  ?>
 </head>
 
 <body>
@@ -130,6 +111,7 @@
       <h2>A look at details</h2>
       <div class="small_articles row">
         <?php
+          require 'connexion.php';        
           $sql =  'SELECT * FROM `article` ORDER BY `ID_ARTICLE` DESC LIMIT 3';
 
           foreach  ($conn->query($sql) as $row) {
@@ -137,8 +119,7 @@
              print "
                 <div class='card web col-md-3 pt-3 m-3' style='width: 18rem;'>
                   <a href='article.php?id=" . $row['ID_article'] . "'>
-                    <img src='upload/".$row['image']."'class='card-img-top' alt='...'>
-                    <div class='card-body'>
+                    <img src='upload/".$row['image']."'class='card-img-top' alt='...'>                    <div class='card-body'>
                      <h5 class='card-title'>" . $row['titre'] . "</h5>
                      <p class='card-text'>". $exerpt."</p>
                      <p class='card-text'><small class='text-muted'>". $row['auteur'] . "</small></p>

@@ -24,6 +24,7 @@
 
                 <input type="submit" id='submit' value='LOGIN' >
                 <?php
+                require 'connexion.php';
                 if(isset($_GET['erreur'])){
                     $err = $_GET['erreur'];
                     if($err==1 || $err==2)
