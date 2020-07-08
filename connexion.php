@@ -1,9 +1,4 @@
 <?php
-// require 'connexion.php';
-// $servername = "promo-29.codeur.online";
-// $username = "erwannl";
-// $password = "k1nO4J9w3nTNpA==";
-// $dbname = "erwannl_take";
 $servername = "localhost";
 $username = "root";
 $password = "";
